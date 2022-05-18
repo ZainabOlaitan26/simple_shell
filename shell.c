@@ -1,4 +1,6 @@
 #include "shell.h"
+#include "holberton.h"
+
 /**
  * main - runs the shell program
  *
