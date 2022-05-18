@@ -21,6 +21,6 @@ char *readline(void)
 	}
 	if (line[len - 1] == '\n')
 		line[len - 1] = '\0';
-	
+
 	return (line);
 }

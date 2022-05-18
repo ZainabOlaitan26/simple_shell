@@ -37,7 +37,7 @@ int main(void)
 			free(line);
 			continue;
 		}
-		args = splitline(line);				
+		args = splitline(line);
 		/* Check if args is NULL(Malloc failed) */
 		if (args == NULL)
 		{

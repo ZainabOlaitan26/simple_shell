@@ -29,9 +29,9 @@ int execute(char **args)
 			command = get_path(command);
 
 		if (!command)
-		{							
-			perror("hsh");											
-			return (0);											
+		{
+			perror("hsh");
+			return (0);
 		}
 
 		if (execve(command, args, NULL) == -1)
