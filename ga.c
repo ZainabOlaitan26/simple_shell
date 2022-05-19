@@ -1,18 +1,19 @@
 #include <stdio.h>
-#include <unistd.h>
-
+#include <stdlib.h>
 /**
- * main - PID
- *
- * Return: Always 0.
+ *main-prototype
+ *Return: 0
  */
 int main(void)
 {
-	pid_t my_pid;
+	char *buffer = malloc(1024);
+	size_t len = 1024;
 
-	my_pid = getpid();
-	printf("hijo %u\n", my_pid);
-	my_pid = getppid();
-	printf("padre %u\n", my_pid);
+	while (1)
+	{
+		printf("$ ");
+		getline(&buffer, &len, stdin);
+		prinf("%s", buffer);
+	}
 	return (0);
 }
