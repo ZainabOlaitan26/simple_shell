@@ -4,30 +4,44 @@
 #include <sys/wait.h>
 
 /**
- * main - fork & wait example
+ * main - exercise: fork + wait + execve
  *
- * Return: Always 0.
+ * Return: Always 0
  */
 int main(void)
 {
-	pid_t child_pid;
+	pid_t my_pid;
+	pid_t child_pid = 1;
+	int i = 0;
 	int status;
+	char *argv[] = {"bin/ls", "-l", "tmp/", NULL};
 
-	child_pid = fork();
-	if (child_pid == -1)
+	my_pid = getpid();
+	while (i <= 4 && (child_pid != 0))
 	{
-		perror("Error:");
-		return (1);
+		child_pid = fork();
+		if (child_pid == -1)
+		{
+			printf("error");
+			return (1);
+		}
+		wait(&status);
+		i++;
 	}
 	if (child_pid == 0)
 	{
-		printf("Wait for me, wait for me\n");
-		sleep(3);
+		printf("--------------------------------\n\n");
+		printf("ID HIJO: %u\n\nID PADRE: %u\n\n", getpid(), getppid());
+		printf("--------------------------------\n\n");
+
 	}
 	else
 	{
-		wait(&status);
-		printf("Oh, it's all better now\n");
+		printf("%u SOY EL PADRE Y MI ID ES: %u\n", my_pid, child_pid);
+	}
+	if (execve(argv[0], argv, NULL) == -1)
+	{
+/*perror("ERROR:");*/
 	}
 	return (0);
 }
