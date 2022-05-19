@@ -1,19 +1,20 @@
 #include <stdio.h>
-#include <unistd.h>
-
+#include <stdlib.h>
 /**
- * main - PID
- *
- * Return: Always 0.
+ *main-prototype
+ *@ac:argument 1
+ *@av:argument 2
+ *Return: 0
  */
-int main(void)
+int main(int ac, char **av)
 {
-	pid_t my_pid;
+	int i = 0;
 
-	my_pid = getpid();
-	printf("hijo %u\n", my_pid);
-	my_pid = getppid();
-	printf("padre %u\n", my_pid);
+	while (av[i])
+	{
+		printf("%s ", av[i]);
+		i++;
+	}
+	printf("\n");
 	return (0);
 }
-
