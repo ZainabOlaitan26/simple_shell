@@ -1,27 +1,20 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <unistd.h>
+
 /**
- *main-prototype
- *Return: 0
+ * main - execve example
+ *
+ * Return: Always 0.
  */
 int main(void)
 {
-	char *buffer = malloc(1024);
-	size_t len = 1024;
-	char *token;
+	char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
 
-	while (1)
+	printf("Before execve\n");
+	if (execve(argv[0], argv, NULL) == -1)
 	{
-		printf("$ ");
-		getline(&buffer, &len, stdin);
-		printf("buffer getline: %s", buffer);
+		perror("Error:");
 	}
-	token = strtok(buffer, " ");
-	while (token)
-	{
-		printf("buffer strtok: %s\n", token);
-		token = strtok(NULL, " ");
-	}
+	printf("After execve\n");
 	return (0);
 }
